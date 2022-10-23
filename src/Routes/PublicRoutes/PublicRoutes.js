@@ -16,13 +16,16 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5001/news"),
+        loader: () =>
+          fetch("https://kora-news-server-hasanc14.vercel.app/news"),
       },
       {
         path: "/category/:id",
         element: <Category></Category>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/category/${params.id}`),
+          fetch(
+            `https://kora-news-server-hasanc14.vercel.app/category/${params.id}`
+          ),
       },
       {
         path: "/news/:id",
@@ -32,7 +35,9 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/news/${params.id}`),
+          fetch(
+            `https://kora-news-server-hasanc14.vercel.app/news/${params.id}`
+          ),
       },
       {
         path: "/login",
