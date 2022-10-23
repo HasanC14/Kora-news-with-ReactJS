@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   FaGoogle,
   FaGithub,
@@ -7,15 +7,33 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
+import { AuthContext } from "../../../Context/AuthProvider";
 import BrandCarousel from "../BrandCarousel/BrandCarousel";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const RightSidenav = () => {
+  const { LoginWithGoogle } = useContext(AuthContext);
+  const provider = new GoogleAuthProvider();
+  const HandleGoogleAuth = () => {
+    LoginWithGoogle(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log("Login Success", result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div>
       {/* Google & GitHub Login */}
       <div>
         <div className="mb-5">
-          <button className="btn btn-outline btn-primary pl-24 pr-24">
+          <button
+            className="btn btn-outline btn-primary pl-24 pr-24"
+            onClick={HandleGoogleAuth}
+          >
             Login with Google{" "}
             <span className="ml-3">
               <FaGoogle />

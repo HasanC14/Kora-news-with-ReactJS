@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="grid grid-cols-2 gap-4">
       {Allnews.map((news) => (
-        <SharednewsCard key={news.id} news={news}></SharednewsCard>
+        <SharednewsCard key={news._id} news={news}></SharednewsCard>
       ))}
     </div>
   );
