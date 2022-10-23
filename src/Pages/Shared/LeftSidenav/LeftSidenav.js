@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const LeftSidenav = () => {
   const [Categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5001/categories")
+    fetch("https://kora-news-server-hasanc14.vercel.app/categories")
       .then((res) => res.json())
       // .then((data) => console.log(data)n
       .then((data) => setCategories(data));
